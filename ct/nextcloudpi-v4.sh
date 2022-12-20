@@ -293,6 +293,13 @@ export PCT_OPTIONS="
   -cores $CORE_COUNT
   -memory $RAM_SIZE
   -unprivileged $CT_TYPE
+  -mp0: /mnt/shared_lxc/4tb,mp=/mnt/4tb
+  -lxc.idmap: u 0 100000 1000
+  -lxc.idmap: g 0 100000 1000
+  -lxc.idmap: u 1000 1000 1
+  -lxc.idmap: g 1000 1000 1
+  -lxc.idmap: u 1001 101000 64535
+  -lxc.idmap: g 1001 101000 64535
   $PW
 "
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/tteck/Proxmox/main/ct/create_lxc.sh)" || exit
